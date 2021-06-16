@@ -16,27 +16,29 @@ export const reset = (p5, canvas) => {
 	for (var i = 0; i < rows; i ++) {
 		state.grid[i] = [];
 		for (var j = 0; j < cols; j ++) {
-			// for (var x = 0; x < cellLayout[i].length; x ++) {
 				if (cellLayout[i][j] === 'L') {
-					state.grid[i][j] = new Cell(p5, j, i, w, 'red', true)
-					// state.grid[i][j].livable = true;
+					state.grid[i][j] = new Cell(p5, j, i, w, 'red', true, false)
 				} else if (cellLayout[i][j] === '#') {
-					state.grid[i][j] = new Cell(p5, j, i, w, 'green', true)
+					state.grid[i][j] = new Cell(p5, j, i, w, 'green', true, true)
 				} else {
-					state.grid[i][j] = new Cell(p5, j, i, w, 'blue', false)
-					// state.grid[i][j].livable = false;
-					
+					state.grid[i][j] = new Cell(p5, j, i, w, 'blue', false, false)
 				}
 			}
-		// }
 	}
 
 
+	var count = 0;
 	for (var i = 0; i < rows; i ++) {
 		for (var j = 0; j < cols; j ++) {
 			state.grid[i][j].countNeighbors();
+			if (state.grid[i][j].neighborCount > 3 && state.grid[i][j].livable) {
+				count++;
+				state.grid[i][j] = new Cell(p5, j, i, w, 'green', true, true)
+				state.grid[i][j].countNeighbors();
+			}
 		}
 	}
+	console.log(count)
 	console.log(state.grid[0][1])
 	console.log(state.grid[0][5])
 	
