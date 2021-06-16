@@ -3,4 +3,5 @@ export var state = {
 	livable: false,
 	total: 0,
 	hourCounter: 0,
+	w: 20,
 }
