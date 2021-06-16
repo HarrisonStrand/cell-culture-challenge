@@ -16,37 +16,65 @@ export const reset = (p5, canvas) => {
 	for (var i = 0; i < rows; i ++) {
 		state.grid[i] = [];
 		for (var j = 0; j < cols; j ++) {
-			state.grid[i][j] = new Cell(p5, j, i, w, 'blue')
-			for (var x = 0; x < cellLayout[i].length; x ++) {
-				if (cellLayout[i][x] === 'L') {
-					state.grid[i][x] = new Cell(p5, x, i, w, 'red')
-				} else if (cellLayout[i][x] === '#') {
-					state.grid[i][x] = new Cell(p5, x, i, w, 'green')
+			// for (var x = 0; x < cellLayout[i].length; x ++) {
+				if (cellLayout[i][j] === 'L') {
+					state.grid[i][j] = new Cell(p5, j, i, w, 'red', true)
+					// state.grid[i][j].livable = true;
+				} else if (cellLayout[i][j] === '#') {
+					state.grid[i][j] = new Cell(p5, j, i, w, 'green', true)
+				} else {
+					state.grid[i][j] = new Cell(p5, j, i, w, 'blue', false)
+					// state.grid[i][j].livable = false;
+					
 				}
 			}
-		}
+		// }
 	}
 
 	//can't count neighbors until grid is initialized - explain reason for duplicate code
 
+	// for (var i = 0; i < rows; i ++) {
+	// 	state.grid[i] = [];
+	// 	for (var j = 0; j < cols; j ++) {
+	// 		state.grid[i][j] = new Cell(p5, j, i, w, 'blue')
+	// 		// for (var x = 0; x < cellLayout[i].length; x ++) {
+	// 			if (cellLayout[i][j] === 'L') {
+	// 				state.grid[i][j] = new Cell(p5, j, i, w, 'red')
+	// 				state.grid[i][j].livable = true;
+	// 			} else if (cellLayout[i][j] === '#') {
+	// 				state.grid[i][j] = new Cell(p5, j, i, w, 'green')
+	// 			}
+	// 		}
+	// 	// }
+	// }
+
 	for (var i = 0; i < rows; i ++) {
 		state.grid[i] = [];
 		for (var j = 0; j < cols; j ++) {
-			state.grid[i][j] = new Cell(p5, j, i, w, 'blue')
-			for (var x = 0; x < cellLayout[i].length; x ++) {
-				if (cellLayout[i][x] === 'L') {
-					state.grid[i][x] = new Cell(p5, x, i, w, 'red')
-					state.grid[i][x].livable = true;
-				} else if (cellLayout[i][x] === '#') {
-					state.grid[i][x] = new Cell(p5, x, i, w, 'green')
+			// for (var x = 0; x < cellLayout[i].length; x ++) {
+				if (cellLayout[i][j] === 'L') {
+					state.grid[i][j] = new Cell(p5, j, i, w, 'red', true)
+				} else if (cellLayout[i][j] === '#') {
+					state.grid[i][j] = new Cell(p5, j, i, w, 'green', true)
+				} else {
+					state.grid[i][j] = new Cell(p5, j, i, w, 'blue', false)
+					
 				}
 			}
+		// }
+	}
+
+
+	for (var i = 0; i < 97; i ++) {
+		for (var j = 0; j < 91; j ++) {
+
+			state.grid[i][j].countNeighbors();
 		}
 	}
-	state.grid[0][1].countNeighbors();
 	state.grid[0][5].countNeighbors();
+	state.grid[1][69].countNeighbors();
 	console.log(state.grid[0][1].neighborCount)
 	console.log(state.grid[0][1])
-	console.log(state.grid[0][2])
-
+	console.log(state.grid[0][5])
+	
 }
