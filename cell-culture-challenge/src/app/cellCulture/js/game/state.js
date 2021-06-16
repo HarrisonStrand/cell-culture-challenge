@@ -1,5 +1,5 @@
 export var state = {
-	cols: null,
-	rows: null,
 	grid: null,
+	livable: false,
+	total: 0,
 }
