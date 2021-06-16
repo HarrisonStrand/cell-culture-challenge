@@ -3,7 +3,7 @@ import { cols, rows } from '../utilities/utilities'
 import {cellLayout} from '../game/cellLayout'
 import { state } from "../game/state";
 
-export default function Cell(p5, i, j, w, color, livable) {
+export default function Cell(p5, j, i, w, color, livable) {
 	this.i = i;
 	this.j = j;
 	this.x = i * w;
@@ -14,11 +14,13 @@ export default function Cell(p5, i, j, w, color, livable) {
 	this.neighborCount = 0;
 
 	this.countNeighbors = function() {
+
 		var total = 0;
 		if (this.livable) {
 			total = -1;
 		}
 
+		//acounts for edge cells to find neighbors
 		for (var xoff = -1; xoff <= 1; xoff ++) { //offset in the x direction
 			for (var yoff = -1; yoff <= 1; yoff ++) { //offset in the y direction
 				var i = this.i + xoff;
@@ -33,10 +35,6 @@ export default function Cell(p5, i, j, w, color, livable) {
 		}
 		this.neighborCount = total;
 	}
-	//if livable then count number of neighbors for overcrowding
-	//if neighbors is over 3 then change color to die off
-	//if not livable return something, maybe a color?
-	//if blossomed then count number of neighhbors again for overcrowding
 	
 	this.show = function(p5) {
 		p5.push();
