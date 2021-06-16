@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as p5 from 'p5';
 import { drawGame } from './js/utilities/drawGame.js'
+import { initiateHour } from './js/utilities/keyPressed.js';
 import { reset } from './js/utilities/reset.js'
 
 @Component({
@@ -27,6 +28,7 @@ export class CellCultureComponent implements OnInit {
       };
 
       p5.keyPressed = () => {
+        initiateHour(p5);
       };
     };
     let canvas = new p5(sketch);

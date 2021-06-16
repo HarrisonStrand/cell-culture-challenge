@@ -11,5 +11,4 @@ export const drawGame = (p5) => {
 			state.grid[i][j].show(p5)
 		}
 	}
-
 }

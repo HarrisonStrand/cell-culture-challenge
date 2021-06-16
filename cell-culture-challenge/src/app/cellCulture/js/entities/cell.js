@@ -12,14 +12,18 @@ export default function Cell(p5, j, i, w, color, livable, blossomed) {
 	this.livable = livable;// true if 'L', false if '.'
 	this.blossomed = blossomed;
 	this.neighborCount = 0;
+	this.marked = '*'
 
 	this.countNeighbors = function() {
+		console.count();
 
 		var total = 0;
 		//accounts for selected cell without neighbors
 		if (this.livable) {
 			total = -1;
 		}
+
+		// || (neighbor.blossomed || !neighbor.livable)
 
 		//acounts for edge cells to find neighbors
 		for (var xoff = -1; xoff <= 1; xoff ++) { //offset in the x direction
@@ -28,8 +32,13 @@ export default function Cell(p5, j, i, w, color, livable, blossomed) {
 				var j = this.j + yoff; //cols
 				if (j > -1 && j < cols && i > -1 && i < rows) {
 					var neighbor = state.grid[i][j];
-					if (neighbor.livable) { //possible fix
+					if (neighbor.livable && !neighbor.blossomed) { //if its red
 						total++;
+					} else if ((neighbor.livable && neighbor.blossomed)) { // if green
+						console.count(total);
+						var roundCount = 0;
+						
+						total --;
 					}
 				}
 			}
@@ -43,12 +52,20 @@ export default function Cell(p5, j, i, w, color, livable, blossomed) {
 		p5.stroke('black')
 		p5.rect(this.x, this.y, this.w, this.w)
 		p5.pop();
-		
-		p5.push();
-		p5.fill('black')
-		p5.stroke('black')
-		p5.text(this.neighborCount, this.x + this.w * .5, this.y + this.w -2)
-		p5.pop();
+		if (this.livable && !this.blossomed) {
+			p5.push();
+			p5.fill('black')
+			p5.stroke('black')
+			p5.text(this.neighborCount, this.x + this.w * .5, this.y + this.w -2)
+			p5.pop();
+		}
+		// } else if (this.blossomed) {
+		// 	p5.push();
+		// 	p5.fill('black')
+		// 	p5.stroke('black')
+		// 	p5.text(this.marked, this.x + this.w * .5, this.y + this.w -2)
+		// 	p5.pop()
+		// }
 	}
 
 }
