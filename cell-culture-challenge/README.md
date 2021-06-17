@@ -110,7 +110,7 @@ Installs all dependancies for the project in order to run the application
 
 Runs the app in the development mode.\
 Open [http://localhost:4200](http://localhost:4200) to view it in the browser.
-Navigate to [http://localhost:4200/arcade-page](http://localhost:4200/cell-culture)
+Navigate to [http://localhost:4200/cell-culture](http://localhost:4200/cell-culture)
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
