@@ -10,10 +10,9 @@ export default function Cell(p5, j, i, w, color, livable, blossomed) {
 	this.livable = livable;
 	this.blossomed = blossomed;
 	this.neighborCount = 0;
-	this.marked = '*'
 
 	this.countNeighbors = function() {
-		console.count();
+		// console.count();
 		var total = 0;
 		if (this.livable) {
 			total = -1;
@@ -28,8 +27,7 @@ export default function Cell(p5, j, i, w, color, livable, blossomed) {
 						total++;
 					} else if ((neighbor.livable && neighbor.blossomed)) {
 						total --;
-						console.count(total);
-						var roundCount = 0;
+						// console.count(total);
 					}
 				}
 			}
