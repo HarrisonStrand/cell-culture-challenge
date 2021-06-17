@@ -21,7 +21,7 @@ const initializeGrid = () => {
 	}
 }
 
-export const roundOne = () => { // initial livable spaces
+export const roundOne = () => {
 	initializeGrid();
 	for (var i = 0; i < rows; i ++) {
 		for (var j = 0; j < cols; j ++) {
@@ -30,7 +30,7 @@ export const roundOne = () => { // initial livable spaces
 	}
 }
 
-export const roundTwo = () => { // all cultured and blossomed
+export const roundTwo = () => {
 initializeGrid();
 	for (var i = 0; i < rows; i ++) {
 		for (var j = 0; j < cols; j ++) {
@@ -46,7 +46,7 @@ initializeGrid();
 	}
 }
 
-export const roundThree = () => { // account for first round of overcrowding
+export const roundThree = () => {
 initializeGrid();
 	for (var i = 0; i < rows; i ++) {
 		for (var j = 0; j < cols; j ++) {
