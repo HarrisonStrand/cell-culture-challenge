@@ -16,7 +16,7 @@ const initializeGrid = () => {
 					state.grid[i][j] = new Cell(p5, j, i, state.w, 'red', true, false)
 					if (state.grid[i][j].livable) {
 						state.totalLivableCount ++;
-						console.log(state.totalLivableCount)
+						// console.log(state.totalLivableCount)
 					}
 				} else if (cellLayout[i][j] === '#') {
 					state.grid[i][j] = new Cell(p5, j, i, state.w, 'green', true, true)
@@ -24,7 +24,7 @@ const initializeGrid = () => {
 					state.grid[i][j] = new Cell(p5, j, i, state.w, 'blue', false, false)
 					if (!state.grid[i][j].livable) {
 						state.unlivableCount ++;
-						console.log(state.unlivableCount)
+						// console.log(state.unlivableCount)
 					}
 				}
 			}
@@ -67,7 +67,7 @@ initializeGrid();
 			}
 			if (state.grid[i][j].blossomed ) {
 				state.cultureCount ++;
-				console.log(state.cultureCount)
+				// console.log(state.cultureCount)
 			}
 		}
 	}
